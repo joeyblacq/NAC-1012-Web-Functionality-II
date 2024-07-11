@@ -3,14 +3,29 @@
 // VARIABLES
 ////////////////////////////////////////////////////////////////
 
+
+//=========================SECTIONS OF HTML============================//
 // Set the DOM elements variables for divisions of steps 1 to 4
+
+
 const DIV_STEP_1 = document.getElementById("step-1");
+
+//container for all input fields
 const DIV_STEP_2 = document.getElementById("step-2");
+
+
 const DIV_STEP_3 = document.getElementById("step-3");
+
+
 const DIV_STEP_4 = document.getElementById("step-4");
+
+
 
 // Set the DOM element variable for building type dropdown of step 1
 const SELECT_BUILDING_TYPE = document.getElementById("select-building-type");
+
+
+//=========================DIVS FOR INPUT FIELDS============================//
 
 // Set the DOM element variable for the group of divisions of step 2 inputs
 const DIV_NUMBER_OF_APARTMENT = document.getElementById("div-number-of-apartments");
@@ -18,8 +33,11 @@ const DIV_MAXIMUM_OCCUPANCY = document.getElementById("div-maximum-occupancy");
 const DIV_NUMBER_OF_FLOORS = document.getElementById("div-number-of-floors");
 const DIV_NUMBER_OF_ELEVATORS = document.getElementById("div-number-of-elevators");
 const DIV_AMOUNT_ELEVATORS_NEEDED = document.getElementById("div-amount-elevators-needed");
+// 
+//========================INPUT ELEMENT================================================
 
 // Set the DOM element variable for inputs of step 2
+
 const INPUT_NUMBER_OF_APARTMENT = DIV_NUMBER_OF_APARTMENT.querySelector('input');
 const INPUT_NUMBER_OF_FLOORS = DIV_NUMBER_OF_FLOORS.querySelector('input');
 const INPUT_MAXIMUM_OCCUPANCY = DIV_MAXIMUM_OCCUPANCY.querySelector('input');
@@ -27,20 +45,25 @@ const INPUT_NUMBER_OF_ELEVATORS = DIV_NUMBER_OF_ELEVATORS.querySelector('input')
 const INPUT_AMOUNT_ELEVATORS_NEEDED = DIV_AMOUNT_ELEVATORS_NEEDED.querySelector('input');
 
 // Set the DOM element variable for group of radio buttons of step 3
+
 const RADIO_BUTTONS_PRODUCT_LINE = document.getElementById('radio-buttons-product-line')
+// ==================RADIO BUTTON ELEMENT=======================================================
 
 // Set the DOM element variable for radio buttons of step 3
+
 const RADIO_BUTTON_STANDARD = document.getElementById("radio-button-standard");
 const RADIO_BUTTON_PREMIUM = document.getElementById("radio-button-premium");
 const RADIO_BUTTON_EXCELIUM = document.getElementById("radio-button-excelium");
-
+// ===================== ELEVATOR INPUT
 // Set the DOM element variable for read-only inputs of step 4
+
 const INPUT_ELEVATOR_UNIT_PRICE = document.getElementById("elevator-unit-price");
 const INPUT_ELEVATOR_TOTAL_PRICE = document.getElementById("elevator-total-price");
 const INPUT_INSTALLATION_FEES = document.getElementById("installation-fees");
 const INPUT_TOTAL_COST = document.getElementById("total-cost");
 
 // Set the object variable for elevator UNIT_PRICES
+
 const UNIT_PRICES = { 
     standard: 8000, 
     premium: 12000, 
@@ -48,6 +71,7 @@ const UNIT_PRICES = {
 };
 
 // Set the object variable for elevator INSTALLATION_PERCENT_FEES
+
 const INSTALLATION_PERCENT_FEES = { 
     standard: 0.1, 
     premium: 0.15, 
@@ -67,6 +91,7 @@ function hideSteps() {
 
 // Function to shows steps 2 to 4 of the quote form
 function showSteps() {
+
     DIV_STEP_2.style.display = 'block';
     DIV_STEP_3.style.display = 'block';
     DIV_STEP_4.style.display = 'block';
@@ -116,49 +141,71 @@ function showHideFieldOnBuildingType() {
 
 
 
-/* PLEASE REMOVE THIS LINE, ALONG WITH THE CLOSING  * /  , TO UNCOMMENT THE CODE BELOW 
-(The page may not work like before since the code is broken and need to be fixed)
+
+
 
 // Functions that calculate the amount of elevators needed depending on the building type
+
 function calculateElevatorsNeeded() {
     const selectedBuildingType = SELECT_BUILDING_TYPE.value;
+    const numberOfFloors = Number(document.getElementById("div-number-of-floors").value);
+    const numberOfApartments = Number(document.getElementById("div-number-of-apartments").value);
     let elevatorsNeeded = '';
 
     // Check if the residential building type is selected and its fields, number of floors value & number of apartments value are filled
-    if (selectedBuildingType === "" &&  && ) {
+    
+    if (selectedBuildingType === "residential" && numberOfFloors  && numberOfApartments ) {
         // Call function that calculates the amount of elevators needed with the proper attributes
-        elevatorsNeeded = calculateResidentialElevators();
+function amountElevatorsNeeded(numFloors, numApartmentsPerFloor) {
+    // Calculate the number of elevators based on some logic
+    let numElevators = numFloors * numApartmentsPerFloor / 10; // Example calculation
+    return numElevators;
+}
+
+        
+        let floors = 10;
+        let apartmentsPerFloor = 20;
+        let elevatorsNeeded = amountElevatorsNeeded(floors, apartmentsPerFloor);
+        console.log(`Number of elevators needed: ${elevatorsNeeded}`);
     }
 
     // Check if the commercial building type is selected and its fields, number of floors value & maximum occupancy value are filled
-    else if (selectedBuildingType === "" &&  && ) {
+    else if (selectedBuildingType === "commercial" && numberOfFloors   && maximumOccupancy ) {
         // Call function that calculates the amount of elevators needed with the proper attributes
-        elevatorsNeeded = calculateCommercialElevators();
+       amountElevatorsNeeded (numberOffFloors,maximumOccupancy);
+
     }
 
     // Check if the industrial building type is selected and it field, number of elevators value is filled
-    else if (selectedBuildingType === "" && ) {
+    else if (selectedBuildingType === "industrial" && numberOfFloors ) {
         // Call function that calculates the amount of elevators needed with the proper attributes
         elevatorsNeeded = calculateIndustrialElevators();
     }
 
     // Set the calculated elevators needed value or empty string
-    INPUT_AMOUNT_ELEVATORS_NEEDED.value = elevatorsNeeded;
+    let calculateElevatorsNeeded = null ;
+
+    calculateElevatorsNeeded = calculateElevatorsNeeded == null ? String(calculateElevatorsNeeded) : "";
+
+    console.log(calculateElevatorsNeeded);
 
     // Call function that calculates the total cost
-    calculateTotalCost(elevatorsNeeded);
-}
+     calculateTotalCost
+    
 
 // Functions that calculate the amount of elevators needed for residential buildings
 function calculateResidentialElevators(numberOfFloors, numberOfApartment) {
     // Set the varialbe of the average apartment per floor
-    let AVG_APT_PER_FLOOR = Math.ceil( / );
+    let AVG_APT_PER_FLOOR = Math.ceil(4);
+
+      let totalApartments = numberOfFloors * AVG_APT_PER_FLOOR;
     
     // Set the varialbe of the amount of elevators needed
-    let ELEVATORS_NEEDED = Math.ceil( / );
+    let ELEVATORS_NEEDED = Math.ceil(20);
+
 
     // Set the varialbe of the amount of elevators bank
-    let ELEVATORS_BANK = Math.ceil( / );
+    let ELEVATORS_BANK = Math.ceil(1);
 
     // Return the total amount of elevators
     return ELEVATORS_NEEDED * ELEVATORS_BANK;
@@ -167,49 +214,62 @@ function calculateResidentialElevators(numberOfFloors, numberOfApartment) {
 // Functions that calculate the amount of elevators needed for commercial buildings
 function calculateCommercialElevators(numberOfFloors, maximumOccupancyPerFloor) {
     // Set the varialbe of the total number of occupants
-    let TOTAL_NUMBER_OCCUPANTS = Math.ceil( * );
+
+     let totalOccupants = numberOfFloors * maximumOccupancyPerFloor;
+     
+    let TOTAL_NUMBER_OCCUPANTS = Math.ceil(4);
 
     // Set the varialbe of the amount of elevators required per bank
-    let ELEVATORS_REQUIRED_PER_BANK = Math.ceil( / );
+    let ELEVATORS_REQUIRED_PER_BANK = Math.ceil(1);
 
     // Set the varialbe of the amount of elevators bank
-    let ELEVATOR_BANKS_REQUIRED = Math.ceil( / );
+    let ELEVATOR_BANKS_REQUIRED = Math.ceil(1);
 
     // Set the varialbe of the total amount of elevators required per bank
-    let TOTAL_ELEVATORS_REQUIRED_PER_BANK =  * ;
+    let TOTAL_ELEVATORS_REQUIRED_PER_BANK = elevatorsNeeded && numberOfElevatorBanks ? Math.ceil(elevatorsNeeded / numberOfElevatorBanks) : '';
+    document.getElementById('INPUT_TOTAL_ELEVATORS_REQUIRED_PER_BANK').value = TOTAL_ELEVATORS_REQUIRED_PER_BANK;
 
     // Set the varialbe of the amount of additional elevators for freight
-    let ADDITIONAL_ELEVATOR_FOR_FREIGHT_PER_BANK = Math.ceil( / );
+    
+     let ADDITIONAL_ELEVATOR_FOR_FREIGHT_PER_BANK  = numberOfFreightElevators && numberOfElevatorBanks ? Math.ceil(numberOfFreightElevators / numberOfElevatorBanks) : '';
 
     // Return the total amount of elevators
-    return TOTAL_ELEVATORS_REQUIRED_PER_BANK + ADDITIONAL_ELEVATOR_FOR_FREIGHT_PER_BANK
+
+    return TOTAL_ELEVATORS_REQUIRED_PER_BANK + ADDITIONAL_ELEVATOR_FOR_FREIGHT_PER_BANK;
 }
 
 // Functions that return the amount of elevators needed for industrial buildings
 function calculateIndustrialElevators(numberOfElevators) {
-    return ;
+    
+    return elevatorsNeeded > 0 ? elevatorsNeeded : 1;
 }
 
 // Function that calculates the installation fees
-function calculateInstallationFees(, ) {
+function calculateInstallationFees(totalPrice, installationPercentFees ) {
+    if (typeof totalPrice !== 'number' || typeof installationPercentFees !== 'number') {
+        throw new Error('Both parameters must be numbers.');
+    }
     return Number(totalPrice) * Number(installationPercentFees);
 }
 
 // Function that calculates the total cost
-function calculateTotalCost() {
+
+function calculateTotalCost(unitPrice, totalElevatorPrice, installationFees) {
+
     // Set empty variables to be used in this function
-    let unitPrice;
-    let totalElevatorPrice;
-    let installationFees;
-    let totalCost;
+
+   
+    let totalCost= unitPrice + totalElevatorPrice + installationFees;
 
     // if statement to check if the radio buttons are not checked and set values to 0
+
     if (!RADIO_BUTTON_STANDARD.checked && !RADIO_BUTTON_PREMIUM.checked && !RADIO_BUTTON_EXCELIUM.checked) {
         unitPrice = 0; totalElevatorPrice = 0; installationFees = 0; totalCost = 0;
     }
     
     // if statement to check if the standard radio buttons is checked and set values
-    if (RADIO_BUTTON_STANDARD.checked) {
+
+    if (RADIO_BUTTON_STANDARD.checked.checked && ! RADIO_BUTTON_PREMIUM.checked && !RADIO_BUTTON_EXCELIUM) {
         unitPrice = UNIT_PRICES.standard;
         totalElevatorPrice = amountElevatorsNeeded * unitPrice;
         installationFees = calculateInstallationFees(totalElevatorPrice, INSTALLATION_PERCENT_FEES.standard);
@@ -217,7 +277,7 @@ function calculateTotalCost() {
     }
 
     // if statement to check if the premium radio buttons is checked and set values
-    if (RADIO_BUTTON_PREMIUM.checked) {
+    if (RADIO_BUTTON_PREMIUM.checked.checked && ! RADIO_BUTTON_PREMIUM.checked && !RADIO_BUTTON_EXCELIUM) {
         unitPrice = UNIT_PRICES.premium;
         totalElevatorPrice = amountElevatorsNeeded * unitPrice;
         installationFees = calculateInstallationFees(totalElevatorPrice, INSTALLATION_PERCENT_FEES.premium);
@@ -225,7 +285,7 @@ function calculateTotalCost() {
     }
 
     // if statement to check if the excelium radio buttons is checked and set values
-    if (RADIO_BUTTON_EXCELIUM.checked) {
+    if (RADIO_BUTTON_EXCELIUM.checked.checked && ! RADIO_BUTTON_PREMIUM.checked && !RADIO_BUTTON_EXCELIUM) {
         unitPrice = UNIT_PRICES.excelium;
         totalElevatorPrice = amountElevatorsNeeded * unitPrice;
         installationFees = calculateInstallationFees(totalElevatorPrice, INSTALLATION_PERCENT_FEES.excelium);
@@ -233,16 +293,22 @@ function calculateTotalCost() {
     }
 
     // Define function to format currency
-    const formatCurrency = (amount) => new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(amount);
+
+    const formatCurrency = (amount) => {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(amount);
+};
 
     // Set read-only inputs with the calculated values using the formatCurrency function
-    INPUT_ELEVATOR_UNIT_PRICE.value = formatCurrency();
-    INPUT_ELEVATOR_TOTAL_PRICE.value = formatCurrency();
-    INPUT_INSTALLATION_FEES.value = formatCurrency();
-    INPUT_TOTAL_COST.value = formatCurrency();
+    INPUT_ELEVATOR_UNIT_PRICE.value = formatCurrency(unitPrice);
+    INPUT_ELEVATOR_TOTAL_PRICE.value = formatCurrency(totalElevatorPrice);
+    INPUT_INSTALLATION_FEES.value = formatCurrency(installationFees);
+    INPUT_TOTAL_COST.value = formatCurrency(totalCost);
+}
 }
 
-*/
 
 
 
@@ -251,20 +317,25 @@ function calculateTotalCost() {
 ////////////////////////////////////////////////////////////////
 
 // Set up event listeners for changes in the building type selection (dropdown) and trigger the function showHideFieldOnBuildingType when a change occurs.
-SELECT_BUILDING_TYPE.addEventListener("change", showHideFieldOnBuildingType);
+
+
+// (The page may not work like before since the code is broken and need to be fixed)
 
 
 
-/* PLEASE REMOVE THIS LINE, ALONG WITH THE CLOSING  * /  , TO UNCOMMENT THE CODE BELOW 
-(The page may not work like before since the code is broken and need to be fixed)
+// DIV_STEP_1.addEventListener('input', calculateElevatorsNeeded);
+DIV_STEP_1.addEventListener('click', showHideFieldOnBuildingType);
 
-// Set up event listeners for input changes in step 2 fields to trigger the function calculateElevatorsNeeded.
-DIV_STEP_2.addEventListener('', calculateElevatorsNeeded)
+
+//// Set up event listeners for input changes in step 2 fields to trigger the function calculateElevatorsNeeded.
+DIV_STEP_2.addEventListener('input', calculateElevatorsNeeded);
+// DIV_STEP_2.addEventListener('click', showHideFieldOnBuildingType);
 
 // Set up event listeners for changes in radio button selections within the product line to trigger the function calculateElevatorsNeeded.
-RADIO_BUTTONS_PRODUCT_LINE.addEventListener('', calculateElevatorsNeeded)
+RADIO_BUTTONS_PRODUCT_LINE.addEventListener('change', calculateElevatorsNeeded);
+// RADIO_BUTTONS_PRODUCT_LINE.addEventListener('click', showHideFieldOnBuildingType);
 
-*/
+
 
 
 
@@ -273,10 +344,17 @@ RADIO_BUTTONS_PRODUCT_LINE.addEventListener('', calculateElevatorsNeeded)
 ////////////////////////////////////////////////////////////////
 
 // Call the function to hide all steps
-hideSteps();
+  hideSteps();
+
+
 
 // Call the function to reset all values
-resetValues();
+ resetValues();
+
 
 // Set the default value of the building type
-SELECT_BUILDING_TYPE.value = "---Select---";
+
+{/* <select id="SELECT_BUILDING_TYPE">///
+    <option value="---Select---">---Select---</option>
+    
+</select> */}
